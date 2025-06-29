@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Ticket Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      padding: 20px;
+    }
+    .booking-form {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .booking-form h2 {
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="booking-form">
+    <h2>Book Event Ticket</h2>
+    <form id="ticketForm">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="event">Select Event:</label>
+        <select id="event" name="event" required>
+          <option value="">-- Choose an Event --</option>
+          <option value="music-fest">Music Festival</option>
+          <option value="tech-conference">Tech Conference</option>
+          <option value="art-expo">Art Expo</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="tickets">Number of Tickets:</label>
+        <input type="number" id="tickets" name="tickets" min="1" max="10" required />
+      </div>
+
+      <button type="submit">Book Now</button>
+    </form>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('ticketForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent actual form submission
+
+      // Optional: You can get input values here if needed
+      const name = document.getElementById('name').value;
+      const event = document.getElementById('event').value;
+      const tickets = document.getElementById('tickets').value;
+
+      messageDiv.textContent = `🎉 Ticket booked successfully for ${name}! Enjoy the ${event.replace('-', ' ')} with ${tickets} ticket(s)!`;
+    });
+  </script>
+
+</body>
+</html>
+
